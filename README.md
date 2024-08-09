@@ -184,7 +184,7 @@ local function processDescendant(descendant)
                     wrench.placeturret:FireServer()
                     Fireded = true
                     print("Fired server event for player: " .. descendant.Name)
-                    return
+                    
                 end
             end
         end
@@ -198,7 +198,7 @@ local function getAllDescendants()
 
     for _, descendant in ipairs(descendants) do
         processDescendant(descendant)
-        task.wait()
+        
     end
     task.wait()
     Fireded = false
@@ -239,10 +239,10 @@ local function getAllDescendants()
 
     for _, descendant in ipairs(descendants) do
         processDescendant(descendant)
-        task.wait()
+        
     end
 
-    task.wait()
+   
 
     local Fireded = false
 end
@@ -272,7 +272,7 @@ local function processDescendant(descendant)
                     ammoBox.LocalScript.RemoteEvent:FireServer()
                     Fireded = true
                     print("Fired server event for Ammo Box for player: " .. descendant.Name)
-                    return  -- Exit after finding and processing Ammo Box
+                   
                 end
             end
         end
@@ -286,9 +286,9 @@ local function getAllDescendants()
 
     for _, descendant in ipairs(descendants) do
         processDescendant(descendant)
-        task.wait()
+        
     end
-    task.wait()
+    
     Fireded = false
 end
 
