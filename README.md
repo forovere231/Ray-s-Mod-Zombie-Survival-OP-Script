@@ -169,7 +169,7 @@ addButtonToPanel(panels["All"], "Infinite Health", UDim2.new(0, 0, 0, 100), UDim
 end)
 
 -- Engineer Panel Buttons
-addButtonToPanel(panels["Engineer"], "Spawn Turret", UDim2.new(0, 0, 0, 0), UDim2.new(0, 160, 0, 50), "Spawn Turret", "Spawns a turret using the Wrench.", function()
+addButtonToPanel(panels["Engineer"], "Spawn Turret", UDim2.new(0, 0, 0, 0), UDim2.new(0, 160, 0, 50), "Spawn Turret (One Engineer or More must be alive.)", "Spawns a turret using the Wrench. (One Engineer or More must be alive.) ", function()
     local wrench = player.Backpack:FindFirstChild("Wrench")
     if wrench then
         wrench.placeturret:FireServer()
@@ -177,7 +177,7 @@ addButtonToPanel(panels["Engineer"], "Spawn Turret", UDim2.new(0, 0, 0, 0), UDim
 end)
 
 -- Healer Panel Buttons
-addButtonToPanel(panels["Healer"], "Spawn Health Kit", UDim2.new(0, 0, 0, 0), UDim2.new(0, 160, 0, 50), "Spawn Health Kit", "Spawns a Health Kit if the player has one.", function()
+addButtonToPanel(panels["Healer"], "Spawn Health Kit", UDim2.new(0, 0, 0, 0), UDim2.new(0, 160, 0, 50), "Spawn Health Kit (One Healer or More must be alive.)", "Spawns a Health Kit if the player has one. (One Healer or More must be alive.)", function()
     local healthKit = player.Backpack:FindFirstChild("Health Kit")
     if healthKit then
         healthKit.LocalScript.RemoteEvent:FireServer()
@@ -185,7 +185,7 @@ addButtonToPanel(panels["Healer"], "Spawn Health Kit", UDim2.new(0, 0, 0, 0), UD
 end)
 
 -- Support Panel Buttons
-addButtonToPanel(panels["Support"], "Spawn Ammo Box", UDim2.new(0, 0, 0, 0), UDim2.new(0, 160, 0, 50), "Spawn Ammo Box", "Spawns an ammo box if the player has one.", function()
+addButtonToPanel(panels["Support"], "Spawn Ammo Box", UDim2.new(0, 0, 0, 0), UDim2.new(0, 160, 0, 50), "Spawn Ammo Box (One Support must be Alive.)", "Spawns an ammo box if the player has one. (One Support must be Alive.)", function()
     local ammoBox = player.Backpack:FindFirstChild("Ammo Box")
     if ammoBox then
         ammoBox.LocalScript.RemoteEvent:FireServer()
