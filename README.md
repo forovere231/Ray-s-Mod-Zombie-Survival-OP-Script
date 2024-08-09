@@ -750,6 +750,7 @@ for _, v in pairs(game.Workspace:GetChildren()) do
 end
     end
 end
+end
 
 -- Connect the key press function to UserInputService
 local UserInputService = game:GetService("UserInputService")
