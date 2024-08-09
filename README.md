@@ -674,6 +674,80 @@ local function onKeyPress(input, gameProcessed)
         end
     elseif input.KeyCode == Enum.KeyCode.G then
         game.ReplicatedStorage.Events.ActivateNade:FireServer()
+    elseif input.KeyCode == Enum.KeyCode.T then
+            local function AddText()
+    -- Create a ScreenGui and TextLabel
+local player = game.Players.LocalPlayer
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "TextGui"
+screenGui.Parent = player:WaitForChild("PlayerGui")
+
+local textLabel = Instance.new("TextLabel")
+textLabel.Name = "KillAllText"
+textLabel.Parent = screenGui
+textLabel.BackgroundTransparency = 1
+textLabel.Text = "Kill all will take a while, estimated time around 10-90 seconds depending on player size."
+textLabel.TextColor3 = Color3.fromRGB(255, 255, 255) -- White color
+textLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0) -- Black stroke
+textLabel.TextStrokeTransparency = 0.5 -- Stroke transparency (0 is fully opaque, 1 is fully transparent)
+textLabel.TextScaled = true
+textLabel.Size = UDim2.new(1, 0, 0, 50) -- Full width and fixed height
+textLabel.Position = UDim2.new(0, 0, 1, -200) -- Bottom of the screen, 50 pixels from the bottom
+textLabel.AnchorPoint = Vector2.new(0, 1) -- Anchor the text to the bottom center
+textLabel.TextAlign = Enum.TextXAlignment.Center
+textLabel.BackgroundTransparency = 1 -- No background
+
+-- Optional: Add some padding to the text for better visual appearance
+textLabel.TextXAlignment = Enum.TextXAlignment.Center
+textLabel.TextYAlignment = Enum.TextYAlignment.Center
+
+end
+
+local StarterGui = game:GetService("StarterGui")
+                    StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, true)
+
+
+                spawn(AddText)
+
+for _, v in pairs(game.Workspace:GetChildren()) do
+    if v:IsA("Model") and v.Name == "Zombie" then
+        for _, findTool in pairs(v:GetChildren()) do
+            if findTool:IsA("Tool") and findTool.Name == "ZombineTool" then
+                findTool.Handle.Size = Vector3.new(2048,2048,2048)
+
+
+            
+                
+
+                task.wait(2)
+
+                 local player = game.Players.LocalPlayer
+    if player and player.Character then
+        local humanoidRootPart = player.Character:FindFirstChild("HumanoidRootPart")
+        if humanoidRootPart then
+            humanoidRootPart.CFrame = game.workspace:FindFirstChild("TeleportPart").CFrame + Vector3.new(0, 5, 0)  -- Move the player into the box
+        end
+    end
+                print("GOGOGO")
+
+                while task.wait() do
+
+                    if game.ReplicatedStorage.RoundInProgress.Value == false then
+                        print("Stopped")
+                        break
+                    end
+
+
+                
+
+                    findTool:Activate()
+
+                    
+                end
+            end
+         end
+    end
+end
     end
 end
 
