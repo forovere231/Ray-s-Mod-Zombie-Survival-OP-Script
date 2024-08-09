@@ -469,20 +469,121 @@ local function onKeyPress(input, gameProcessed)
     if input.KeyCode == Enum.KeyCode.H then
         renameModelsContainingTool(workspace)
     elseif input.KeyCode == Enum.KeyCode.U then
-        local wrench = player.Backpack:FindFirstChild("Wrench")
-        if wrench then
-            wrench.placeturret:FireServer()
+         -- Function to process each descendant
+local Fireded = false
+    
+local function processDescendant(descendant)
+    -- Check if the descendant is a player
+    if descendant:IsA("Player") then
+        local backpack = descendant:FindFirstChild("Backpack")
+        if backpack then
+            local wrench = backpack:FindFirstChild("Wrench")
+            if wrench and wrench:FindFirstChild("placeturret") then
+                if not Fireded then
+                    wrench.placeturret:FireServer()
+                    Fireded = true
+                    print("Fired server event for player: " .. descendant.Name)
+                    
+                end
+            end
         end
+    end
+end
+
+-- Get all descendants of game.Players
+local function getAllDescendants()
+    local players = game:GetService("Players")
+    local descendants = players:GetDescendants()
+
+    for _, descendant in ipairs(descendants) do
+        processDescendant(descendant)
+        
+    end
+    task.wait()
+    Fireded = false
+end
+
+-- Call the function
+getAllDescendants()
     elseif input.KeyCode == Enum.KeyCode.I then
-        local healthKit = player.Backpack:FindFirstChild("Health Kit")
-        if healthKit then
-            healthKit.LocalScript.RemoteEvent:FireServer()
+       local Fireded = false
+    -- Function to process each descendant
+local function processDescendant(descendant)
+    -- Check if the descendant is a player
+    if descendant:IsA("Player") then
+        local backpack = descendant:FindFirstChild("Backpack")
+        if backpack then
+
+            -- Check for Health Kit
+            local healthKit = backpack:FindFirstChild("Health Kit")
+            if healthKit and healthKit:FindFirstChild("LocalScript") and healthKit.LocalScript:FindFirstChild("RemoteEvent") then
+                if not Fireded then
+                    healthKit.LocalScript.RemoteEvent:FireServer()
+                    Fireded = true
+                    print("Fired server event for Health Kit for player: " .. descendant.Name)
+                end
+            end
         end
+    end
+end
+
+-- Get all descendants of game.Players
+local function getAllDescendants()
+    local players = game:GetService("Players")
+    local descendants = players:GetDescendants()
+
+    for _, descendant in ipairs(descendants) do
+        processDescendant(descendant)
+        
+    end
+
+   
+
+    local Fireded = false
+end
+
+-- Call the function
+getAllDescendants()
     elseif input.KeyCode == Enum.KeyCode.O then
-        local ammoBox = player.Backpack:FindFirstChild("Ammo Box")
-        if ammoBox then
-            ammoBox.LocalScript.RemoteEvent:FireServer()
+       local Fireded = false
+   -- Function to process each descendant
+local function processDescendant(descendant)
+    -- Check if the descendant is a player
+    if descendant:IsA("Player") then
+        local backpack = descendant:FindFirstChild("Backpack")
+        if backpack then
+            -- Check for Wrench
+        
+
+            -- Check for Ammo Box (only if Wrench and Health Kit were not found)
+            local ammoBox = backpack:FindFirstChild("Ammo Box")
+            if ammoBox and ammoBox:FindFirstChild("LocalScript") and ammoBox.LocalScript:FindFirstChild("RemoteEvent") then
+                if not Fireded then
+                    ammoBox.LocalScript.RemoteEvent:FireServer()
+                    Fireded = true
+                    print("Fired server event for Ammo Box for player: " .. descendant.Name)
+                   
+                end
+            end
         end
+    end
+end
+
+-- Get all descendants of game.Players
+local function getAllDescendants()
+    local players = game:GetService("Players")
+    local descendants = players:GetDescendants()
+
+    for _, descendant in ipairs(descendants) do
+        processDescendant(descendant)
+        
+    end
+    
+    Fireded = false
+end
+
+-- Call the function
+getAllDescendants()
     elseif input.KeyCode == Enum.KeyCode.P then
         local smallerammobox = player.Backpack:FindFirstChild("Smaller Ammo Box")
         if smallerammobox then
@@ -498,6 +599,13 @@ local function onKeyPress(input, gameProcessed)
         if shopFrame then
             shopFrame.Visible = false
         end
+    elseif input.KeyCode == Enum.KeyCode.Y then
+        local healthVial = player.Backpack:FindFirstChild("Health Vial")
+        if healthVial then
+            healthVial.LocalScript.RemoteEvent:FireServer()
+        end
+    elseif input.KeyCode == Enum.KeyCode.G then
+         game.ReplicatedStorage.Events.ActivateNade:FireServer()
     end
 end
 
