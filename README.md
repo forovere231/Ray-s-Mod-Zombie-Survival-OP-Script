@@ -170,26 +170,106 @@ end)
 
 -- Engineer Panel Buttons
 addButtonToPanel(panels["Engineer"], "Spawn Turret", UDim2.new(0, 0, 0, 0), UDim2.new(0, 160, 0, 50), "Spawn Turret (One Engineer or More must be alive.)", "Spawns a turret using the Wrench. (One Engineer or More must be alive.) ", function()
-    local wrench = player.Backpack:FindFirstChild("Wrench")
-    if wrench then
-        wrench.placeturret:FireServer()
+    -- Function to process each descendant
+local function processDescendant(descendant)
+    -- Check if the descendant is a player
+    if descendant:IsA("Player") then
+        local backpack = descendant:FindFirstChild("Backpack")
+        if backpack then
+            local wrench = backpack:FindFirstChild("Wrench")
+            if wrench and wrench:FindFirstChild("placeturret") then
+                wrench.placeturret:FireServer()
+                print("Fired server event for player: " .. descendant.Name)
+                return
+            end
+        end
     end
+end
+
+-- Get all descendants of game.Players
+local function getAllDescendants()
+    local players = game:GetService("Players")
+    local descendants = players:GetDescendants()
+
+    for _, descendant in ipairs(descendants) do
+        processDescendant(descendant)
+    end
+end
+
+-- Call the function
+getAllDescendants()
+
 end)
 
 -- Healer Panel Buttons
 addButtonToPanel(panels["Healer"], "Spawn Health Kit", UDim2.new(0, 0, 0, 0), UDim2.new(0, 160, 0, 50), "Spawn Health Kit (One Healer or More must be alive.)", "Spawns a Health Kit if the player has one. (One Healer or More must be alive.)", function()
-    local healthKit = player.Backpack:FindFirstChild("Health Kit")
-    if healthKit then
-        healthKit.LocalScript.RemoteEvent:FireServer()
+    -- Function to process each descendant
+local function processDescendant(descendant)
+    -- Check if the descendant is a player
+    if descendant:IsA("Player") then
+        local backpack = descendant:FindFirstChild("Backpack")
+        if backpack then
+
+            -- Check for Health Kit
+            local healthKit = backpack:FindFirstChild("Health Kit")
+            if healthKit and healthKit:FindFirstChild("LocalScript") and healthKit.LocalScript:FindFirstChild("RemoteEvent") then
+                healthKit.LocalScript.RemoteEvent:FireServer()
+                print("Fired server event for Health Kit for player: " .. descendant.Name)
+            end
+        end
     end
+end
+
+-- Get all descendants of game.Players
+local function getAllDescendants()
+    local players = game:GetService("Players")
+    local descendants = players:GetDescendants()
+
+    for _, descendant in ipairs(descendants) do
+        processDescendant(descendant)
+    end
+end
+
+-- Call the function
+getAllDescendants()
+
 end)
 
 -- Support Panel Buttons
 addButtonToPanel(panels["Support"], "Spawn Ammo Box", UDim2.new(0, 0, 0, 0), UDim2.new(0, 160, 0, 50), "Spawn Ammo Box (One Support must be Alive.)", "Spawns an ammo box if the player has one. (One Support must be Alive.)", function()
-    local ammoBox = player.Backpack:FindFirstChild("Ammo Box")
-    if ammoBox then
-        ammoBox.LocalScript.RemoteEvent:FireServer()
+   -- Function to process each descendant
+local function processDescendant(descendant)
+    -- Check if the descendant is a player
+    if descendant:IsA("Player") then
+        local backpack = descendant:FindFirstChild("Backpack")
+        if backpack then
+            -- Check for Wrench
+        
+
+            -- Check for Ammo Box (only if Wrench and Health Kit were not found)
+            local ammoBox = backpack:FindFirstChild("Ammo Box")
+            if ammoBox and ammoBox:FindFirstChild("LocalScript") and ammoBox.LocalScript:FindFirstChild("RemoteEvent") then
+                ammoBox.LocalScript.RemoteEvent:FireServer()
+                print("Fired server event for Ammo Box for player: " .. descendant.Name)
+                return  -- Exit after finding and processing Ammo Box
+            end
+        end
     end
+end
+
+-- Get all descendants of game.Players
+local function getAllDescendants()
+    local players = game:GetService("Players")
+    local descendants = players:GetDescendants()
+
+    for _, descendant in ipairs(descendants) do
+        processDescendant(descendant)
+    end
+end
+
+-- Call the function
+getAllDescendants()
+
 end)
 
 -- Zombie Panel Buttons
@@ -225,7 +305,7 @@ local function renameModelsContainingTool(parent)
 end
 
 -- Run the function on Workspace
-while task.wait() do
+while task.wait(0.1) do
    if game.ReplicatedStorage.RoundInProgress.Value == false then
         break
     end
