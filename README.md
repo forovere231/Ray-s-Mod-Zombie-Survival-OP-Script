@@ -400,7 +400,7 @@ addButtonToPanel(panels["Map"], "Highlight Zombie Spawns", UDim2.new(0, 0, 0, 15
 end
 end)
 
-addButtonToPanel(panels["Map"], "", UDim2.new(0, 0, 0, 0), UDim2.new(0, 160, 0, 50), "Remove Anti-cheat Kill Bricks!", "Removes Anti-cheat Kill Bricks so you can explore the map without dying.", function()
+addButtonToPanel(panels["Map"], "", UDim2.new(0, 0, 0, 0), UDim2.new(0, 160, 0, 50), "Remove Anti-cheat Kill Bricks", "Removes Anti-cheat Kill Bricks so you can explore the map without dying.", function()
      -- Find the MAP folder
 -- Get the "MAP" folder
 local mapFolder = game.Workspace:FindFirstChild("MAP")
