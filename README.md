@@ -171,6 +171,8 @@ end)
 -- Engineer Panel Buttons
 addButtonToPanel(panels["Engineer"], "Spawn Turret", UDim2.new(0, 0, 0, 0), UDim2.new(0, 160, 0, 50), "Spawn Turret (One Engineer or More must be alive.)", "Spawns a turret using the Wrench. (One Engineer or More must be alive.) ", function()
     -- Function to process each descendant
+local Fireded = false
+    
 local function processDescendant(descendant)
     -- Check if the descendant is a player
     if descendant:IsA("Player") then
@@ -178,9 +180,12 @@ local function processDescendant(descendant)
         if backpack then
             local wrench = backpack:FindFirstChild("Wrench")
             if wrench and wrench:FindFirstChild("placeturret") then
-                wrench.placeturret:FireServer()
-                print("Fired server event for player: " .. descendant.Name)
-                return
+                if not Fireded then
+                    wrench.placeturret:FireServer()
+                    Fireded = true
+                    print("Fired server event for player: " .. descendant.Name)
+                    return
+                end
             end
         end
     end
@@ -193,7 +198,10 @@ local function getAllDescendants()
 
     for _, descendant in ipairs(descendants) do
         processDescendant(descendant)
+        task.wait()
     end
+    task.wait()
+    Fireded = false
 end
 
 -- Call the function
@@ -203,6 +211,7 @@ end)
 
 -- Healer Panel Buttons
 addButtonToPanel(panels["Healer"], "Spawn Health Kit", UDim2.new(0, 0, 0, 0), UDim2.new(0, 160, 0, 50), "Spawn Health Kit (One Healer or More must be alive.)", "Spawns a Health Kit if the player has one. (One Healer or More must be alive.)", function()
+local Fireded = false
     -- Function to process each descendant
 local function processDescendant(descendant)
     -- Check if the descendant is a player
@@ -213,8 +222,11 @@ local function processDescendant(descendant)
             -- Check for Health Kit
             local healthKit = backpack:FindFirstChild("Health Kit")
             if healthKit and healthKit:FindFirstChild("LocalScript") and healthKit.LocalScript:FindFirstChild("RemoteEvent") then
-                healthKit.LocalScript.RemoteEvent:FireServer()
-                print("Fired server event for Health Kit for player: " .. descendant.Name)
+                if not Fireded then
+                    healthKit.LocalScript.RemoteEvent:FireServer()
+                    Fireded = true
+                    print("Fired server event for Health Kit for player: " .. descendant.Name)
+                end
             end
         end
     end
@@ -227,7 +239,12 @@ local function getAllDescendants()
 
     for _, descendant in ipairs(descendants) do
         processDescendant(descendant)
+        task.wait()
     end
+
+    task.wait()
+
+    local Fireded = false
 end
 
 -- Call the function
@@ -237,6 +254,8 @@ end)
 
 -- Support Panel Buttons
 addButtonToPanel(panels["Support"], "Spawn Ammo Box", UDim2.new(0, 0, 0, 0), UDim2.new(0, 160, 0, 50), "Spawn Ammo Box (One Support must be Alive.)", "Spawns an ammo box if the player has one. (One Support must be Alive.)", function()
+
+local Fireded = false
    -- Function to process each descendant
 local function processDescendant(descendant)
     -- Check if the descendant is a player
@@ -249,9 +268,12 @@ local function processDescendant(descendant)
             -- Check for Ammo Box (only if Wrench and Health Kit were not found)
             local ammoBox = backpack:FindFirstChild("Ammo Box")
             if ammoBox and ammoBox:FindFirstChild("LocalScript") and ammoBox.LocalScript:FindFirstChild("RemoteEvent") then
-                ammoBox.LocalScript.RemoteEvent:FireServer()
-                print("Fired server event for Ammo Box for player: " .. descendant.Name)
-                return  -- Exit after finding and processing Ammo Box
+                if not Fireded then
+                    ammoBox.LocalScript.RemoteEvent:FireServer()
+                    Fireded = true
+                    print("Fired server event for Ammo Box for player: " .. descendant.Name)
+                    return  -- Exit after finding and processing Ammo Box
+                end
             end
         end
     end
@@ -264,7 +286,10 @@ local function getAllDescendants()
 
     for _, descendant in ipairs(descendants) do
         processDescendant(descendant)
+        task.wait()
     end
+    task.wait()
+    Fireded = false
 end
 
 -- Call the function
