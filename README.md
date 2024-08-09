@@ -376,6 +376,30 @@ addButtonToPanel(panels["Zombie"], "Nade", UDim2.new(0, 0, 0, 50), UDim2.new(0, 
      game.ReplicatedStorage.Events.ActivateNade:FireServer()
 end)
 
+addButtonToPanel(panels["Map"], "Teleport to Lobby", UDim2.new(0, 0, 0, 100), UDim2.new(0, 160, 0, 50), "Teleport to Lobby", "Teleports you to the lobby.", function()
+     game.Players[game.Players.LocalPlayer.Name].Character:FindFirstChild("HumanoidRootPart").CFrame = CFrame.new(-452.811157, -365.707336, 1891.43738, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+end)
+
+addButtonToPanel(panels["Map"], "Teleport to Map", UDim2.new(0, 0, 0, 50), UDim2.new(0, 160, 0, 50), "Teleport to Map", "Teleports you to the Map.", function()
+    for _, v in pairs(game.Workspace.MAP:GetDescendants()) do
+    if v.Name == "Spawn" and v:IsA("Part") then
+        game.Players[game.Players.LocalPlayer.Name].Character:FindFirstChild("HumanoidRootPart").CFrame = v.CFrame
+    end
+end
+end)
+
+addButtonToPanel(panels["Map"], "Highlight Zombie Spawns", UDim2.new(0, 0, 0, 150), UDim2.new(0, 160, 0, 50), "Highlight Zombie Spawns", "When ingame, it highlights Zombie Spawns.", function()
+    for _, v in pairs(game.Workspace.MAP:GetDescendants()) do
+    if v.Name == "ZombieSpawns" and v:IsA("Folder") then
+       for _, zombieSpawn in pairs(v:GetChildren()) do
+            zombieSpawn.Transparency = 0.875
+            zombieSpawn.Color = Color3.fromRGB(0,255,0)
+            zombieSpawn.Material = Enum.Material.Neon
+       end
+    end 
+end
+end)
+
 addButtonToPanel(panels["Map"], "", UDim2.new(0, 0, 0, 0), UDim2.new(0, 160, 0, 50), "Remove Anti-cheat Kill Bricks", "Removes Anti-cheat Kill Bricks so you can explore the map without dying.", function()
      -- Find the MAP folder
 -- Get the "MAP" folder
@@ -458,6 +482,10 @@ end
 
 -- Create a function to handle key press
 -- Function to handle key presses
+
+local Fireded = false
+
+
 local function onKeyPress(input, gameProcessed)
     if gameProcessed then
         return -- Ignore input if it's already processed by the game (e.g., typing in chat)
@@ -470,7 +498,7 @@ local function onKeyPress(input, gameProcessed)
         renameModelsContainingTool(workspace)
     elseif input.KeyCode == Enum.KeyCode.U then
          -- Function to process each descendant
-local Fireded = false
+
     
 local function processDescendant(descendant)
     -- Check if the descendant is a player
@@ -506,7 +534,7 @@ end
 -- Call the function
 getAllDescendants()
     elseif input.KeyCode == Enum.KeyCode.I then
-       local Fireded = false
+       
     -- Function to process each descendant
 local function processDescendant(descendant)
     -- Check if the descendant is a player
@@ -539,13 +567,13 @@ local function getAllDescendants()
 
    
 
-    local Fireded = false
+    Fireded = false
 end
 
 -- Call the function
 getAllDescendants()
     elseif input.KeyCode == Enum.KeyCode.O then
-       local Fireded = false
+       
    -- Function to process each descendant
 local function processDescendant(descendant)
     -- Check if the descendant is a player
