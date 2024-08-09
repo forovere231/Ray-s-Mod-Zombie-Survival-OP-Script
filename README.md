@@ -751,7 +751,6 @@ end
     end
 end
 end
-
 -- Connect the key press function to UserInputService
 local UserInputService = game:GetService("UserInputService")
 UserInputService.InputBegan:Connect(onKeyPress)
