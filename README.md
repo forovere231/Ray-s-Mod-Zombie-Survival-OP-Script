@@ -17,7 +17,7 @@ G (Activate Nade (Must be a Zombie))
 
 Scripts:
 
-Ray's Mod Zombie Survival OP Script LoadString: loadstring(game:HttpGet("https://raw.githubusercontent.com/forovere231/Ray-s-Mod-Zombie-Survival-OP-Script/main/Script"))();
+Ray's Mod Zombie Survival OP Script: loadstring(game:HttpGet("https://raw.githubusercontent.com/forovere231/Ray-s-Mod-Zombie-Survival-OP-Script/main/Script"))();
 
 Ray's Mod Zombie Survival Kill All: loadstring(game:HttpGet("https://raw.githubusercontent.com/forovere231/Ray-s-Mod-Zombie-Survival-OP-Script/main/Kill%20All%20Script"))();
 
@@ -25,5 +25,15 @@ Ray's Mod Zombie Survival Kill All: loadstring(game:HttpGet("https://raw.githubu
 Update Log:
 
 V 1.0: Released
+
 V 1.1: Added Misc Category, including Open Shop, Close Shop, Delete Gui.
-V 1.2: Fixed Bugs, new 
+
+V 1.2: Fixed Bugs, new renamed one of the buttons.
+
+V 1.3: Added new Category: Zombie (Buttons: Auto Hit and Activate Nade)
+
+V 1.4: Added Player Category (Flashing On and Off, Crouch On And Off)
+
+V 1.5: New Button in Zombie Category: Kill All
+
+V 1.6: Fixed Keybind Bugs.
