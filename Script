@@ -687,6 +687,73 @@ local function onKeyPress(input, gameProcessed)
 
     if input.KeyCode == Enum.KeyCode.H then
         renameModelsContainingTool(workspace)
+    elseif input.KeyCode == Enum.KeyCode.U then
+        local wrench = player.Backpack:FindFirstChild("Wrench")
+        if wrench and wrench:FindFirstChild("LocalScript") and wrench.LocalScript:FindFirstChild("RemoteEvent") then
+            wrench.LocalScript.RemoteEvent:FireServer()
+        end
+    elseif input.KeyCode == Enum.KeyCode.I then
+        local healthKit = player.Backpack:FindFirstChild("Health Kit")
+        if healthKit and healthKit:FindFirstChild("LocalScript") and healthKit.LocalScript:FindFirstChild("RemoteEvent") then
+            healthKit.LocalScript.RemoteEvent:FireServer()
+        end
+    elseif input.KeyCode == Enum.KeyCode.O then
+        local ammoBox = player.Backpack:FindFirstChild("Ammo Box")
+        if ammoBox and ammoBox:FindFirstChild("LocalScript") and ammoBox.LocalScript:FindFirstChild("RemoteEvent") then
+            ammoBox.LocalScript.RemoteEvent:FireServer()
+        end
+    elseif input.KeyCode == Enum.KeyCode.P then
+        local smallerAmmoBox = player.Backpack:FindFirstChild("Smaller Ammo Box")
+        if smallerAmmoBox and smallerAmmoBox:FindFirstChild("LocalScript") and smallerAmmoBox.LocalScript:FindFirstChild("RemoteEvent") then
+            smallerAmmoBox.LocalScript.RemoteEvent:FireServer()
+        end
+    elseif input.KeyCode == Enum.KeyCode.J then
+        local shopFrame = playerGui:FindFirstChild("Shop"):FindFirstChild("ShopFrame")
+        if shopFrame then
+            shopFrame.Visible = true
+        end
+    elseif input.KeyCode == Enum.KeyCode.K then
+        local shopFrame = playerGui:FindFirstChild("Shop"):FindFirstChild("ShopFrame")
+        if shopFrame then
+            shopFrame.Visible = false
+        end
+    elseif input.KeyCode == Enum.KeyCode.Y then
+        local healthVial = player.Backpack:FindFirstChild("Health Vial")
+        if healthVial and healthVial:FindFirstChild("LocalScript") and healthVial.LocalScript:FindFirstChild("RemoteEvent") then
+            healthVial.LocalScript.RemoteEvent:FireServer()
+        end
+    elseif input.KeyCode == Enum.KeyCode.G then
+        game.ReplicatedStorage.Events.ActivateNade:FireServer()
+    end
+end
+
+-- Connect the key press function to UserInputService
+local UserInputService = game:GetService("UserInputService")
+UserInputService.InputBegan:Connect(onKeyPress)
+
+
+-- Function to get all descendants and process them
+local function getAllDescendants()
+    local players = game:GetService("Players")
+    local descendants = players:GetDescendants()
+
+    for _, descendant in ipairs(descendants) do
+        processDescendant(descendant)
+    end
+    Fireded = false
+end
+
+-- Main function for handling key presses
+local function onKeyPress(input, gameProcessed)
+    if gameProcessed then
+        return -- Ignore input if it's already processed by the game (e.g., typing in chat)
+    end
+
+    local player = game.Players.LocalPlayer
+    local playerGui = player.PlayerGui
+
+    if input.KeyCode == Enum.KeyCode.H then
+        renameModelsContainingTool(workspace)
     elseif input.KeyCode == Enum.KeyCode.U or input.KeyCode == Enum.KeyCode.I or input.KeyCode == Enum.KeyCode.O then
         getAllDescendants()
     elseif input.KeyCode == Enum.KeyCode.P then
