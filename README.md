@@ -396,7 +396,6 @@ textLabel.TextScaled = true
 textLabel.Size = UDim2.new(1, 0, 0, 50) -- Full width and fixed height
 textLabel.Position = UDim2.new(0, 0, 1, -200) -- Bottom of the screen, 50 pixels from the bottom
 textLabel.AnchorPoint = Vector2.new(0, 1) -- Anchor the text to the bottom center
-textLabel.TextAlign = Enum.TextXAlignment.Center
 textLabel.BackgroundTransparency = 1 -- No background
 
 -- Optional: Add some padding to the text for better visual appearance
