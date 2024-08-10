@@ -687,15 +687,11 @@ local function onKeyPress(input, gameProcessed)
 
     if input.KeyCode == Enum.KeyCode.H then
         renameModelsContainingTool(workspace)
-    elseif input.KeyCode == Enum.KeyCode.U then
-        getAllDescendants()
-    elseif input.KeyCode == Enum.KeyCode.I then
-        getAllDescendants()
-    elseif input.KeyCode == Enum.KeyCode.O then
+    elseif input.KeyCode == Enum.KeyCode.U or input.KeyCode == Enum.KeyCode.I or input.KeyCode == Enum.KeyCode.O then
         getAllDescendants()
     elseif input.KeyCode == Enum.KeyCode.P then
         local smallerAmmoBox = player.Backpack:FindFirstChild("Smaller Ammo Box")
-        if smallerAmmoBox and smallerAmmoBox.LocalScript and smallerAmmoBox.LocalScript:FindFirstChild("RemoteEvent") then
+        if smallerAmmoBox and smallerAmmoBox:FindFirstChild("LocalScript") and smallerAmmoBox.LocalScript:FindFirstChild("RemoteEvent") then
             smallerAmmoBox.LocalScript.RemoteEvent:FireServer()
         end
     elseif input.KeyCode == Enum.KeyCode.J then
@@ -710,20 +706,23 @@ local function onKeyPress(input, gameProcessed)
         end
     elseif input.KeyCode == Enum.KeyCode.Y then
         local healthVial = player.Backpack:FindFirstChild("Health Vial")
-        if healthVial and healthVial.LocalScript and healthVial.LocalScript:FindFirstChild("RemoteEvent") then
+        if healthVial and healthVial:FindFirstChild("LocalScript") and healthVial.LocalScript:FindFirstChild("RemoteEvent") then
             healthVial.LocalScript.RemoteEvent:FireServer()
         end
     elseif input.KeyCode == Enum.KeyCode.G then
         game.ReplicatedStorage.Events.ActivateNade:FireServer()
     elseif input.KeyCode == Enum.KeyCode.T then
-        spawn(KillAll)
+            spawn(KillAll)
+        else
+            warn("KillAll function is not defined.")
+        end
     end
 end
 
-end
 -- Connect the key press function to UserInputService
 local UserInputService = game:GetService("UserInputService")
 UserInputService.InputBegan:Connect(onKeyPress)
+
 
 
 
