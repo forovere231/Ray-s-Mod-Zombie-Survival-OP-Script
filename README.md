@@ -17,6 +17,6 @@ G (Activate Nade (Must be a Zombie))
 
 Scripts:
 
-Ray's Mod Zombie Survival OP Script LoadString: https://raw.githubusercontent.com/forovere231/Ray-s-Mod-Zombie-Survival-OP-Script/main/Kill%20All%20Script
+Ray's Mod Zombie Survival OP Script LoadString: loadstring(game:HttpGet("https://raw.githubusercontent.com/forovere231/Ray-s-Mod-Zombie-Survival-OP-Script/main/Script"))();
 
-Ray's Mod Zombie Survival Kill All: loadstring(game:HttpGet("https://raw.githubusercontent.com/forovere231/Ray-s-Mod-Zombie-Survival-OP-Script/main/Kill%20All%20Script"))();
+Ray's Mod Zombie Survival Kill All: https://raw.githubusercontent.com/forovere231/Ray-s-Mod-Zombie-Survival-OP-Script/main/Kill%20All%20Script
