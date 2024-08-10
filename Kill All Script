@@ -32,7 +32,7 @@ for _, v in pairs(game.Workspace:GetChildren()) do
                     if findTool.Handle then
                         findTool.Handle.Size = Vector3.new(2048, 2048, 2048)
                         -- Ensure the tool is equipped
-                        findTool:Activate()
+                        findTool.LocalScript.reg:FireServer()
                     else
                         print("Handle not found")
                     end
