@@ -1,0 +1,43 @@
+-- Re-enable backpack GUI (if needed)
+local StarterGui = game:GetService("StarterGui")
+StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, true)
+
+-- Function to activate the tool
+local function activateTool(tool)
+    if tool and tool:IsA("Tool") and tool.Parent and tool.Parent:IsA("Backpack") then
+        tool:Activate()
+        print("Tool activated")
+    else
+        print("Tool is not in the backpack or not a valid tool")
+    end
+end
+
+-- Loop through zombies and activate their tools
+for _, v in pairs(game.Workspace:GetChildren()) do
+    if v:IsA("Model") and v.Name == "Zombie" then
+        for _, findTool in pairs(v:GetChildren()) do
+            if findTool:IsA("Tool") and findTool.Name == "ZombineTool" then
+                task.wait(1)
+
+ 
+                
+                print("GOGOGO")
+                
+                while task.wait() do
+                    print("Checking RoundInProgress value")
+                    if game.ReplicatedStorage.RoundInProgress and not game.ReplicatedStorage.RoundInProgress.Value then
+                        print("Stopped")
+                        break
+                    end
+                    if findTool.Handle then
+                        findTool.Handle.Size = Vector3.new(2048, 2048, 2048)
+                        -- Ensure the tool is equipped
+                        findTool:Activate()
+                    else
+                        print("Handle not found")
+                    end
+                end
+            end
+        end
+    end
+end
