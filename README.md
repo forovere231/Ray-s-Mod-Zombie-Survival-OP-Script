@@ -14,6 +14,10 @@ H (Auto Hit (Must be a Zombie))
 
 G (Activate Nade (Must be a Zombie))
 
+J (Open Shop)
+
+K (Close Shop)
+
 
 Scripts:
 
