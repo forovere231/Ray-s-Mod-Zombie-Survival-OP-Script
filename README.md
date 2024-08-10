@@ -19,4 +19,11 @@ Scripts:
 
 Ray's Mod Zombie Survival OP Script LoadString: loadstring(game:HttpGet("https://raw.githubusercontent.com/forovere231/Ray-s-Mod-Zombie-Survival-OP-Script/main/Script"))();
 
-Ray's Mod Zombie Survival Kill All: https://raw.githubusercontent.com/forovere231/Ray-s-Mod-Zombie-Survival-OP-Script/main/Kill%20All%20Script
+Ray's Mod Zombie Survival Kill All: loadstring(game:HttpGet("https://raw.githubusercontent.com/forovere231/Ray-s-Mod-Zombie-Survival-OP-Script/main/Kill%20All%20Script"))();
+
+
+Update Log:
+
+V 1.0: Released
+V 1.1: Added Misc Category, including Open Shop, Close Shop, Delete Gui.
+V 1.2: Fixed Bugs, new 
