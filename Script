@@ -624,17 +624,15 @@ end
 
 
 
-local function onKeyPress(input, gameProcessed)
-
-
 local Fireded = false
 
+-- Function to process each descendant
 local function processDescendant(descendant)
     -- Check if the descendant is a player
     if descendant:IsA("Player") then
         local backpack = descendant:FindFirstChild("Backpack")
         if backpack then
-            -- Process wrench
+            -- Process Wrench
             local wrench = backpack:FindFirstChild("Wrench")
             if wrench and wrench:FindFirstChild("placeturret") then
                 if not Fireded then
@@ -667,6 +665,7 @@ local function processDescendant(descendant)
     end
 end
 
+-- Function to get all descendants and process them
 local function getAllDescendants()
     local players = game:GetService("Players")
     local descendants = players:GetDescendants()
@@ -677,6 +676,7 @@ local function getAllDescendants()
     Fireded = false
 end
 
+-- Main function for handling key presses
 local function onKeyPress(input, gameProcessed)
     if gameProcessed then
         return -- Ignore input if it's already processed by the game (e.g., typing in chat)
@@ -711,11 +711,6 @@ local function onKeyPress(input, gameProcessed)
         end
     elseif input.KeyCode == Enum.KeyCode.G then
         game.ReplicatedStorage.Events.ActivateNade:FireServer()
-    elseif input.KeyCode == Enum.KeyCode.T then
-            spawn(KillAll)
-        else
-            warn("KillAll function is not defined.")
-        end
     end
 end
 
