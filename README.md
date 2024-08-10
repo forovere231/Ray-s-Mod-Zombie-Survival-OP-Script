@@ -653,12 +653,11 @@ for _, v in pairs(game.Workspace:GetChildren()) do
          end
     end
 end
-    end
-end
-end
-end
+
+
 
 local function onKeyPress(input, gameProcessed)
+
 
 local Fireded = false
 
@@ -751,7 +750,9 @@ local function onKeyPress(input, gameProcessed)
     elseif input.KeyCode == Enum.KeyCode.T then
         spawn(KillAll)
     end
+end
 
+end
 -- Connect the key press function to UserInputService
 local UserInputService = game:GetService("UserInputService")
 UserInputService.InputBegan:Connect(onKeyPress)
