@@ -73,7 +73,7 @@ noButton.MouseButton1Click:Connect(function()
 end)
 
 -- Category Buttons
-local categories = {"Engineer", "Healer", "Support", "All", "Misc", "Zombie", "Player", "Map"}
+local categories = {"Engineer", "Healer", "Support", "All", "Misc", "Zombie", "Player", "Map", "Respawning"}
 local categoryButtons = {}
 
 for i, cat in ipairs(categories) do
@@ -466,6 +466,68 @@ end
 
 
 end)
+
+addButtonToPanel(panels["Respawning"], "Spawn as Healer", UDim2.new(0, 0, 0, 0), UDim2.new(0, 160, 0, 50), "Spawn as Healer", "Make you spawn as a healer.", function()
+    local args = {
+    [1] = 0,
+    [2] = "healer"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("ClassPick"):FireServer(unpack(args))
+
+end)
+
+addButtonToPanel(panels["Respawning"], "Spawn as Support", UDim2.new(0, 0, 0, 50), UDim2.new(0, 160, 0, 50), "Spawn as Support", "Make you spawn as a Support.", function()
+    local args = {
+    [1] = 0,
+    [2] = "support"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("ClassPick"):FireServer(unpack(args))
+
+end)
+
+addButtonToPanel(panels["Respawning"], "Spawn as Engineer", UDim2.new(0, 0, 0, 100), UDim2.new(0, 160, 0, 50), "Spawn as Engineer", "Make you spawn as a Engineer.", function()
+    local args = {
+    [1] = 0,
+    [2] = "engineer"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("ClassPick"):FireServer(unpack(args))
+
+end)
+
+addButtonToPanel(panels["Respawning"], "Spawn as Assault", UDim2.new(0, 0, 0, 150), UDim2.new(0, 160, 0, 50), "Spawn as Assault", "Make you spawn as a Assault.", function()
+    local args = {
+    [1] = 0,
+    [2] = "assault"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("ClassPick"):FireServer(unpack(args))
+
+end)
+
+addButtonToPanel(panels["Respawning"], "Spawn as Heavy", UDim2.new(0, 0, 0, 200), UDim2.new(0, 160, 0, 50), "Spawn as Heavy", "Make you spawn as a Heavy.", function()
+    local args = {
+    [1] = 0,
+    [2] = "heavy"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("ClassPick"):FireServer(unpack(args))
+
+end)
+
+addButtonToPanel(panels["Misc"], "Infinite Points", UDim2.new(0, 0, 0, 200), UDim2.new(0, 160, 0, 50), "Infinite Points", "Gives you infinite points, don't press this too much or you will have a negative points.", function()
+    local args = {
+    [1] = -999999999,
+    [2] = ""
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("ClassPick"):FireServer(unpack(args))
+
+end)
+
+
 
 
 
