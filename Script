@@ -1,3 +1,6 @@
+--Ray's Mod Zombie Survival Script. This script is too OP Yeah...
+--Anyways this took me a while to make but enjoy! Made by Zimd.
+
 -- Main GUI Setup
 local player = game.Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
