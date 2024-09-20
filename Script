@@ -532,7 +532,7 @@ end)
 
 addButtonToPanel(panels["Zombie"], "Zombie ESP", UDim2.new(0, 0, 0, 200), UDim2.new(0, 160, 0, 50), "Zombie ESP" , "Turns on Zombie ESP so you can see them through walls.", function()
 
-   while task.wait() and not descendant:FindFirstChild("High") do
+  while task.wait(0.1) do
    if game.ReplicatedStorage.RoundInProgress.Value == false then
         break
     end
@@ -545,8 +545,9 @@ for _, descendant in ipairs(workspace:GetDescendants()) do
         highlight.FillColor = Color3.fromRGB(0, 255, 0) -- Green
         highlight.OutlineColor = Color3.fromRGB(0, 100, 0) -- Dark Green
 
+       if not descendant:FindFirstChild("High") then
         highlight.Parent = descendant
-
+        end
         
     end
 end
