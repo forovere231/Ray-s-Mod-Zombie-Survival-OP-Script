@@ -44,4 +44,4 @@ V 1.6: Fixed Keybind Bugs.
 
 V 1.7: Added New Three Buttons, new category: Respawn. Respawns as any class for free., Misc Category: Infinite Points is Added, Zombie Category: Zombie ESP is also added
 
-V 1.8: Fixed Bugs
+V 1.8: Fixed Bugs, and Fixed Zombie ESP Lagging the game
