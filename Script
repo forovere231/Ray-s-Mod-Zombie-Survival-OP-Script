@@ -519,7 +519,7 @@ end)
 
 addButtonToPanel(panels["Misc"], "Infinite Points", UDim2.new(0, 0, 0, 150), UDim2.new(0, 160, 0, 50), "Infinite Points", "Gives you infinite points, don't press this too much or you will have a negative points.", function()
     local args = {
-    [1] = -9999999999,
+    [1] = -999999999,
     [2] = ""
 }
 
