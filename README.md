@@ -41,3 +41,5 @@ V 1.4: Added Player Category (Flashing On and Off, Crouch On And Off)
 V 1.5: New Button in Zombie Category: Kill All
 
 V 1.6: Fixed Keybind Bugs.
+
+V 1.7: Added New Three Buttons, new category: Respawn. Respawns as any class for free., Misc Category: Infinite Points is Added, Zombie Category: Zombie ESP is also added
