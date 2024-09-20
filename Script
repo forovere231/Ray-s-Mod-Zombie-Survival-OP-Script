@@ -10,7 +10,7 @@ local leaderstats = player:WaitForChild("Leaderstats")
 local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "MainGUI"
 screenGui.ResetOnSpawn = false
-screenGui.Parent = playerGui
+screenGui.Parent = game:GetService("CoreGui")
 screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 -- Main Frame
