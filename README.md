@@ -23,7 +23,7 @@ Scripts:
 
 Ray's Mod Zombie Survival OP Script: loadstring(game:HttpGet("https://raw.githubusercontent.com/forovere231/Ray-s-Mod-Zombie-Survival-OP-Script/main/Script"))();
 
-Ray's Mod Zombie Survival Kill All: loadstring(game:HttpGet("https://raw.githubusercontent.com/forovere231/Ray-s-Mod-Zombie-Survival-OP-Script/main/Kill%20All%20Script"))();
+Ray's Mod Zombie Survival Kill All BETA: loadstring(game:HttpGet("https://raw.githubusercontent.com/forovere231/Ray-s-Mod-Zombie-Survival-OP-Script/main/Kill%20All%20Script"))();
 
 
 Update Log:
@@ -46,4 +46,6 @@ V 1.7: Added New Three Buttons, new category: Respawn. Respawns as any class for
 
 V 1.8: Fixed Bugs, and Fixed Zombie ESP Lagging the game
 
-V 1.9: Fixed Keybind Bugs, Added New Button in All Category: New Infinte Health and replaced text for Older version of Infinite Health to Old Infinite Health (Still Requires Health Vials). EVERY INFINITE HEALTH YOU CAN STILL DIE DUE TO POISON HEADCRABS!
+V 1.9: Bug Fixes Again
+
+V 2 (working! Major Update.): Fixed Keybind Bugs, Added New Button in All Category: New Infinte Health and replaced text for Older version of Infinite Health to Old Infinite Health (Still Requires Health Vials). EVERY INFINITE HEALTH YOU CAN STILL DIE DUE TO POISON HEADCRABS, Removed Kill All in Zombie category due to keybind bugs, and you will have to use the kill all script (which is in beta) above. Added Scrolling feature!
