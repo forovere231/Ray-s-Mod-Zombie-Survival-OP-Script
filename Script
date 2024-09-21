@@ -518,7 +518,6 @@ end)
 
 
 
--- Add the Toggle Third Person button to the Misc panel
 
 
 -- Category Button Click Events
@@ -600,76 +599,7 @@ local function processDescendant(descendant, eventName)
     end
 end
 
-local function KillAll()
-    local player = game.Players.LocalPlayer
-local screenGui = Instance.new("ScreenGui")
-screenGui.Name = "TextGui"
-screenGui.Parent = player:WaitForChild("PlayerGui")
 
-local textLabel = Instance.new("TextLabel")
-textLabel.Name = "KillAllText"
-textLabel.Parent = screenGui
-textLabel.BackgroundTransparency = 1
-textLabel.Text = "Kill all will take a while, estimated time around 10-90 seconds depending on player size."
-textLabel.TextColor3 = Color3.fromRGB(255, 255, 255) -- White color
-textLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0) -- Black stroke
-textLabel.TextStrokeTransparency = 0.5 -- Stroke transparency (0 is fully opaque, 1 is fully transparent)
-textLabel.TextScaled = true
-textLabel.Size = UDim2.new(1, 0, 0, 50) -- Full width and fixed height
-textLabel.Position = UDim2.new(0, 0, 1, -200) -- Bottom of the screen, 50 pixels from the bottom
-textLabel.AnchorPoint = Vector2.new(0, 1) -- Anchor the text to the bottom center
-textLabel.TextAlign = Enum.TextXAlignment.Center
-textLabel.BackgroundTransparency = 1 -- No background
-
--- Optional: Add some padding to the text for better visual appearance
-textLabel.TextXAlignment = Enum.TextXAlignment.Center
-textLabel.TextYAlignment = Enum.TextYAlignment.Center
-
-end
-
--- Re-enable backpack GUI (if needed)
-local StarterGui = game:GetService("StarterGui")
-StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, true)
-
--- Function to activate the tool
-local function activateTool(tool)
-    if tool and tool:IsA("Tool") and tool.Parent and tool.Parent:IsA("Backpack") then
-        tool:Activate()
-        print("Tool activated")
-    else
-        print("Tool is not in the backpack or not a valid tool")
-    end
-end
-
--- Loop through zombies and activate their tools
-for _, v in pairs(game.Workspace:GetChildren()) do
-    if v:IsA("Model") and v.Name == "Zombie" then
-        for _, findTool in pairs(v:GetChildren()) do
-            if findTool:IsA("Tool") and findTool.Name == "ZombineTool" then
-                task.wait(1)
-
- 
-                
-                print("GOGOGO")
-                
-                while task.wait() do
-                    print("Checking RoundInProgress value")
-                    if game.ReplicatedStorage.RoundInProgress and not game.ReplicatedStorage.RoundInProgress.Value then
-                        print("Stopped")
-                        break
-                    end
-                    if findTool.Handle then
-                        findTool.Handle.Size = Vector3.new(2048, 2048, 2048)
-                        -- Ensure the tool is equipped
-                        findTool:Activate()
-                    else
-                        print("Handle not found")
-                    end
-                end
-            end
-        end
-    end
-end
 
 
 
